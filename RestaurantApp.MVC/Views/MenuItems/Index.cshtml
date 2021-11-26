@@ -1,0 +1,76 @@
+﻿@model RestaurantApp.MVC.ViewModels.MenuItems.MenuItemListViewModel
+
+@{
+    ViewData["Title"] = "Меню";
+}
+<h1>Меню</h1>
+
+<p>
+    <a asp-action="Create">Добавить в меню</a> |
+    @using (Html.BeginForm("Export", "MenuItems", FormMethod.Post))
+    {
+        <input type="submit" id="btnSubmit" value="Експорт в CSV" />
+    }
+</p>
+
+<form method="get">
+    <div class="form-inline form-group">
+        <label class="control-label">Название позиции: </label>
+        <input name="Name" class="form-control" />
+        <input type="submit" value="Поиск" class="btn btn-default" />
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-route-sort="@ViewBag.NameSort">
+                    Наименование позиции в меню
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sort="@ViewBag.WeightSort">
+                    Вес
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sort="@ViewBag.PriceSort">
+                    Цена
+                </a>
+            </th>
+            <th>
+                Ингредиенты
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var index = 0;
+            @foreach (var item in Model.MenuItems)
+            {
+                <tr>
+                    <td>
+                        @item.PositionName
+                    </td>
+                    <td>
+                        @item.Weight
+                    </td>
+                    <td>
+                        @item.Price
+                    </td>
+                    <td>
+                        @Model.Ingridients[index]
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Изменить</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Детали</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+                    </td>
+                </tr>
+                index++;
+            }
+        }
+    </tbody>
+</table>

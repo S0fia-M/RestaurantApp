@@ -1,0 +1,52 @@
+﻿@model IEnumerable<RestaurantApp.Data.Models.Domain.Shift>
+
+@{
+    ViewData["Title"] = "Список смен";
+}
+
+<h1>Список смен</h1>
+
+<p>
+    <a asp-action="Create">Добавить</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Profit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShiftDate)
+            </th>
+            <th>
+                Фамилия сотрудника
+            </th>
+            <th>
+                Имя сотрудника
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Profit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShiftDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employer.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employer.FirstName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Изменить</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,42 @@
+﻿@model RestaurantApp.Data.Models.Domain.Branch
+
+@{
+    ViewData["Title"] = "Детали";
+}
+
+<h1>Детали филиала</h1>
+
+<div>
+    <h4>Филиал</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt class = "col-sm-2">
+            Сотрудник
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(modelItem => string.Format("{0} {1}", modelItem.Employer.LastName, modelItem.Employer.FirstName))
+        </dd>
+        <dt class = "col-sm-2">
+            Склад
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.WarehouseItem.Address)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Изменить</a> |
+    <a asp-action="Index">Назад к списку</a>
+</div>

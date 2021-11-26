@@ -1,0 +1,29 @@
+﻿@model IEnumerable<RestaurantApp.Data.Models.Domain.Order>
+
+@{
+    ViewData["Title"] = "Список заказов";
+}
+
+<h1>Список заказов</h1>
+
+<p>
+    <a asp-action="Create">Добавить</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Номер заказа</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                <label>@item.Id</label>
+                <a asp-action="Edit" asp-route-id="@item.Id">Изменить</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

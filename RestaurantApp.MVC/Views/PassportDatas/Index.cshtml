@@ -1,0 +1,78 @@
+﻿@model IEnumerable<RestaurantApp.Data.Models.Domain.PassportData>
+
+@{
+    ViewData["Title"] = "Список паспортных данных";
+}
+
+<h1>Паспортные данные</h1>
+
+<p>
+    <a asp-action="Create">Добавить</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PassportSeries)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PassportNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlaceOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IssuedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartmentCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IssuedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BirthDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PassportSeries)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PassportNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlaceOfBirth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IssuedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartmentCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IssuedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BirthDate)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Изменить</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Детали</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,64 @@
+﻿@using System.Security.Claims
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+@if (User.Identity.IsAuthenticated)
+{
+    @if (User.IsInRole("Admin"))
+    {
+        <h3>Управление пользователями</h3>
+        <div>
+            <a class="btn btn-sm btn-primary" asp-controller="Roles" asp-action="Index">Роли пользователей</a>
+            <a class="btn btn-sm btn-primary" asp-controller="Roles" asp-action="UserList">Список пользователей</a>
+        </div>
+    }
+
+<div>
+    <h3>Управление системой</h3>
+
+    <div>
+        <h4>Меню</h4>
+        <ul>
+            <li><a class="btn btn-sm btn-primary" asp-controller="MenuItems" asp-action="Index">Меню</a></li>
+            <li><a class="btn btn-sm btn-primary" asp-controller="Compositions" asp-action="Index">Составы</a></li>
+        </ul>
+    </div>
+
+    <div>
+        <h4>Заказы</h4>
+        <ul>
+            <li><a class="btn btn-sm btn-primary" asp-controller="Orders" asp-action="Index">Заказы</a></li>
+            <li><a class="btn btn-sm btn-primary" asp-controller="Shifts" asp-action="Index">Смены</a></li>
+        </ul>
+    </div>
+
+    <div>
+        <h4>Учет сотрудников</h4>
+        <ul>
+            <li><a class="btn btn-sm btn-primary" asp-controller="Positions" asp-action="Index">Должности</a></li>
+            <li><a class="btn btn-sm btn-primary" asp-controller="PassportDatas" asp-action="Index">Паспортные данные</a></li>
+            <li><a class="btn btn-sm btn-primary" asp-controller="Employers" asp-action="Index">Сотрудники</a></li>
+            <li><a class="btn btn-sm btn-primary" asp-controller="HumanResourcesDepartments" asp-action="Index">Отдел кадров</a></li>
+        </ul>
+    </div>
+
+    <div>
+        <h4>Учет складов и товаров</h4>
+        <ul>
+            <li><a class="btn btn-sm btn-primary" asp-controller="Products" asp-action="Index">Продукты</a></li>
+            <li><a class="btn btn-sm btn-primary" asp-controller="WarehouseItems" asp-action="Index">Склады</a></li>
+            <li><a class="btn btn-sm btn-primary" asp-controller="Branches" asp-action="Index">Филиалы</a></li>
+        </ul>
+    </div>
+
+
+
+</div>
+}
+else
+{
+    <a asp-controller="Account" asp-action="Login">Вход</a>
+    <a asp-controller="Account" asp-action="Register">Регистрация</a>
+}

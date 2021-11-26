@@ -1,0 +1,47 @@
+﻿@model IEnumerable<RestaurantApp.Data.Models.Domain.HumanResourcesDepartments>
+
+@{
+    ViewData["Title"] = "Список учетных данных";
+}
+
+<h1>Список учетных данных</h1>
+
+<p>
+    <a asp-action="Create">Добавить</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmploymentDate)
+            </th>
+            <th>
+                Сотрудник
+            </th>
+            <th>
+                Должность
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmploymentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employer.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Изменить</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Детали</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

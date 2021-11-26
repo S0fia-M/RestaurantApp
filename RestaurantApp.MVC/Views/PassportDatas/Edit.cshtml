@@ -1,0 +1,66 @@
+﻿@model RestaurantApp.Data.Models.Domain.PassportData
+
+@{
+    ViewData["Title"] = "Изменение";
+}
+
+<h1>Изменение паспортных данных</h1>
+
+<h4>Паспортные данные</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PassportSeries" class="control-label"></label>
+                <input asp-for="PassportSeries" class="form-control" />
+                <span asp-validation-for="PassportSeries" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PassportNumber" class="control-label"></label>
+                <input asp-for="PassportNumber" class="form-control" />
+                <span asp-validation-for="PassportNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label"></label>
+                <input asp-for="Gender" class="form-control" />
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PlaceOfBirth" class="control-label"></label>
+                <input asp-for="PlaceOfBirth" class="form-control" />
+                <span asp-validation-for="PlaceOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IssuedBy" class="control-label"></label>
+                <input asp-for="IssuedBy" class="form-control" />
+                <span asp-validation-for="IssuedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DepartmentCode" class="control-label"></label>
+                <input asp-for="DepartmentCode" class="form-control" />
+                <span asp-validation-for="DepartmentCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IssuedDate" class="control-label"></label>
+                <input asp-for="IssuedDate" class="form-control" />
+                <span asp-validation-for="IssuedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BirthDate" class="control-label"></label>
+                <input asp-for="BirthDate" class="form-control" />
+                <span asp-validation-for="BirthDate" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Назад к списку</a>
+</div>
+

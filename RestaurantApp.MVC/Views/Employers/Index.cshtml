@@ -1,0 +1,73 @@
+﻿@model IEnumerable<RestaurantApp.Data.Models.Domain.Employer>
+
+@{
+    ViewData["Title"] = "Список";
+}
+
+<h1>Список сотрудников</h1>
+
+<p>
+    <a asp-action="Create">Добавить</a> |
+    @using (Html.BeginForm("Export", "Employers", FormMethod.Post))
+    {
+        <input type="submit" id="btnSubmit" value="Експорт в CSV" />
+    }
+</p>
+
+<form method="get">
+    <div class="form-inline form-group">
+        <label class="control-label">Фамилия: </label>
+        <input name="lastName" class="form-control" />
+        <input type="submit" value="Поиск" class="btn btn-default" />
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-route-sort="@ViewBag.NameSort">
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sort="@ViewBag.LastNameSort">
+                    @Html.DisplayNameFor(model => model.LastName)
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sort="@ViewBag.MiddleNameSort">
+                    @Html.DisplayNameFor(model => model.MiddleName)
+                </a>
+            </th>
+            <th>
+                Номер паспорта
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MiddleName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PassportData.PassportNumber)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Изменить</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Детали</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
